@@ -9,7 +9,7 @@ const Update = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [updateData, setUpdateData] = useState();
-    const {users, loading} = useSelector((state)=> state.app.users);
+    const {users, loading} = useSelector((state)=> state.app);
 
     useEffect(()=>{
        if(id){
@@ -20,15 +20,15 @@ const Update = () => {
     console.log(updateData);
 
     const newData = (e)=>{
-        setUpdateData({...updateData, [e.target.name] : e.target.value})  
+        setUpdateData({...updateData, [e.target.name] : e.target.value});  
     }
-    console.log(updateData);
+    //console.log(updateData);
     const handleUpdate = (e) =>{
      e.preventDefault();
      dispatch(updateUser(updateData));
      navigate('/read');
 
-    }
+    };
 
   return (
     <div>
@@ -42,7 +42,7 @@ const Update = () => {
             className="form-control"
             value={updateData && updateData.name}
             onChange={newData}
-            required
+            
           />
         </div>
         <div className="mb-3">
@@ -53,7 +53,7 @@ const Update = () => {
             className="form-control"
             value={updateData && updateData.email}
            onChange={newData}
-            required
+            
           />
         </div>
         <div className="mb-3">
@@ -64,7 +64,6 @@ const Update = () => {
             className="form-control"
             value={updateData && updateData.age}
            onChange={newData}
-            required
           />
         </div>
         <div className="mb-3">
@@ -75,7 +74,7 @@ const Update = () => {
             type="radio"
             checked = {updateData && updateData.gender === 'Male'}
            onChange={newData}
-            required
+            
           />
           <label className="form-check-label">Male</label>
         </div>
